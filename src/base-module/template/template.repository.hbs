@@ -1,0 +1,7 @@
+import { Injectable } from '@nestjs/common'
+import { BaseRepository } from 'src/base-module/base.repository'
+import { ${serviceName} } from './entity/${serviceName}.entity'
+
+
+@Injectable()
+export default class ${serviceName}Repository extends BaseRepository<${serviceName}> {}

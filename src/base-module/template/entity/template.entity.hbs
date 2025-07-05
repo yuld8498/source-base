@@ -1,0 +1,15 @@
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import { Exclude } from 'class-transformer'
+
+@Entity('${serviceName}')
+export class ${serviceName} {
+  @PrimaryGeneratedColumn('uuid')
+  id: string
+
+  @Column()
+  name: string
+
+  constructor(partial: Partial<${serviceName}>) {
+    Object.assign(this, partial)
+  }
+}

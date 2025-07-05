@@ -1,0 +1,59 @@
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  ClassSerializerInterceptor,
+  UseInterceptors,
+} from '@nestjs/common';
+import { ApiTags, ApiBearerAuth, ApiExtraModels } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/guard/jwt-auth.guard';
+import { ${serviceName} } from './entity/${serviceName}.entity';
+import ${serviceName}Service from './${serviceName}.service';
+import Create${serviceName}Dto from './dto/create-${serviceName}.dto';
+import Update${serviceName}Dto from './dto/update-${serviceName}.dto';
+
+@ApiTags('${serviceName}s')
+@ApiExtraModels(${serviceName})
+@Controller()
+@UseInterceptors(ClassSerializerInterceptor)
+export class ${serviceName}Controller {
+  constructor(private readonly ${serviceName}sService: ${serviceName}Service) {}
+
+  @Post()
+  create(@Body() create${serviceName}Dto: Create${serviceName}Dto) {
+    return this.${serviceName}sService.create(create${serviceName}Dto);
+  }
+
+  @Get()
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  findAll() {
+    return this.${serviceName}sService.findAll();
+  }
+
+  @Get(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  findOne(@Param('id') id: string) {
+    return this.${serviceName}sService.findOneById(id);
+  }
+
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  update(@Param('id') id: string, @Body() update${serviceName}Dto: Update${serviceName}Dto) {
+    return this.${serviceName}sService.update(id, update${serviceName}Dto);
+  }
+
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  remove(@Param('id') id: string) {
+    return this.${serviceName}sService.delete(id);
+  }
+}
