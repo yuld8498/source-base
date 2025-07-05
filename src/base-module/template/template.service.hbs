@@ -2,39 +2,38 @@ import { Injectable } from '@nestjs/common'
 import { ${serviceName} } from './entity/${serviceName}.entity'
 import { BaseService } from 'src/base-module/base.service'
 import { DeepPartial, FindManyOptions, FindOptionsWhere, Repository } from 'typeorm'
-import ${serviceName}Repository from './${serviceName}.repository'
 import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export default class ${serviceName}Service extends BaseService<${serviceName}> {
   constructor(
     @InjectRepository(${serviceName})
-    private repository: ${serviceName}Repository,
+    private repository: Repository<${serviceName}>
   ) {
-    super()
+    super();
   }
 
-  create(data: DeepPartial<${serviceName}>): Promise<${serviceName}> {
+  async create(data: DeepPartial<${serviceName}>): Promise<${serviceName}> {
     return this.repository.create(data)
   }
 
-  findAll(options?: FindManyOptions<${serviceName}>): Promise<${serviceName}[]> {
-    return this.repository.findAll()
+  async findAll(options?: FindManyOptions<${serviceName}>): Promise<${serviceName}[]> {
+    return this.repository.find()
   }
   
-  findOneById(id: any): Promise<${serviceName} | null> {
-    return this.repository.findById(id);
+  async findOneById(id: any): Promise<${serviceName} | null> {
+    return this.repository.findOne({ where: { id: id } });
   }
 
   findOneBy(where: FindOptionsWhere<${serviceName}>): Promise<${serviceName}> {
     return this.repository.findOneBy(where)
   }
 
-  update(id: any, data: Partial<${serviceName}>): Promise<void> {
+  async update(id: any, data: Partial<${serviceName}>): Promise<void> {
     return this.update(id, data)
   }
 
-  delete(id: any): Promise<void> {
+  async delete(id: any): Promise<void> {
     return this.delete(id)
   }
 }

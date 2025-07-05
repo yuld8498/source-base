@@ -67,7 +67,7 @@ App Skeleton
 │   ├── route
 │   │   ├── app
 │   │   ├── core
-│   │   └── api
+│   │   └── v1
 │   ├── util
 │   │   └── ...
 │   ├── main.ts

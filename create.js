@@ -137,7 +137,6 @@ class TemplateFile {
     this.mapFile = {
       controller: 'template.controller.hbs',
       module: 'template.module.hbs',
-      repository: 'template.repository.hbs',
       service: 'template.service.hbs',
       dtoUpdate: 'dto/update-template.dto.hbs',
       dtoCreate: 'dto/create-template.dto.hbs',
@@ -226,7 +225,6 @@ async function generateTemplateService() {
   }
   new TemplateFile('controller', dataBinding).save();
   new TemplateFile('module', dataBinding).save();
-  new TemplateFile('repository', dataBinding).save();
   new TemplateFile('service', dataBinding).save();
   new TemplateFile('dtoUpdate', dataBinding).save();
   new TemplateFile('dtoCreate', dataBinding).save();

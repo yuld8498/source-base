@@ -34,4 +34,4 @@ const imports = [
 @Module({
   imports,
 })
-export default class ApiModule {}
+export default class V1Module {}
