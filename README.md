@@ -88,6 +88,7 @@ App Skeleton
 ## Installation
 
 ```bash
+cp .env.example .env
 $ pnpm install
 ```
 

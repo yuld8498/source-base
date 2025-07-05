@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './route/app/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ShareFunction } from './utils/static-function';
 
